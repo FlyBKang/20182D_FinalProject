@@ -13,6 +13,16 @@ def handle_events(events):
             Global.MouseStar[num].dirX = Global.MouseStar[num].dirY = 0
             Global.MouseStar[num].Life = random.randint(12, 20)
             Global.MouseStar[num].live = True
+            if(Global.stage == "level"):
+                for i in range(0,8):
+                    if(180-25+60*i < Global.MyMouse[0] <180+25+60*i):
+                        if (250-25 < Global.MyMouse[1] < 250+25):
+                            Global.Itemshow = i
+                            break
+                        else:
+                            Global.Itemshow = -1
+                    else:
+                        Global.Itemshow = -1
 
         if event.type == SDL_MOUSEBUTTONDOWN:
             for i in range(0,50):
@@ -82,6 +92,8 @@ def handle_events(events):
                 if(570-70 < Global.MyMouse[0] <570+70):
                     if (670-65 < Global.MyMouse[1] < 670+65):
                         Global.g_Type = 2
+
+
 
                 if(Global.g_Level == -1):
                     pass

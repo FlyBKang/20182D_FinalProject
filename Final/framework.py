@@ -32,6 +32,7 @@ class TEXTURE:
     P_Monster = load_image("resource\\Unit.png")
     P_Boss1 = load_image("resource\\boss1.png")
     stage_arr = [Map(0, 0, 500, 800)]
+    Font = load_font("ENCR10B.TTF",30)
 
 Texture = TEXTURE()
 def Collision():
@@ -303,9 +304,19 @@ def LevelDraw():
             #P_stage[1].clip_draw(stage_arr[0].HightLight[0],stage_arr[0].HightLight[1],stage_arr[0].Size[0],stage_arr[0].Size[1],330,470,100,100)
             #P_stage[2].clip_draw(stage_arr[0].HightLight[0],stage_arr[0].HightLight[1],stage_arr[0].Size[0],stage_arr[0].Size[1],450,470,100,100)
             #P_stage[3].clip_draw(stage_arr[0].HightLight[0],stage_arr[0].HightLight[1],stage_arr[0].Size[0],stage_arr[0].Size[1],570,470,100,100)
-        #ITEM
-        draw_rectangle(150,200,175+60*8,300)
+        #ITEM draw
+        for i in range(0,8):
+            draw_rectangle(150+60*i,200, 150+60*(i+1),300)
+            if(Global.MyItem.inven[i].Num==-1):
+                temp = random.randint(0,21)
+                Global.MyItem.inven[i]= ItemIndex[temp]
+            else:
+                ItemDraw(Global.MyItem.inven[i].Num,180+60*i,250,45,45)
 
+        if(Global.Itemshow != -1):
+            if (Global.Itemshow != -1):
+                Texture.Font.draw(180, 200, Global.MyItem.inven[Global.Itemshow].Name, (0, 0, 0))
+                Texture.Font.draw(180, 150, Global.MyItem.inven[Global.Itemshow].Text, (0, 0, 0))
 def shoot():
     global Global
     for Arr in Global.g_BulletArr:
@@ -403,3 +414,71 @@ def Input():
     handle_events(events)
 
 
+def ItemDraw(num,x,y,sx,sz):
+    i = 0
+    if(num == i):
+        Texture.P_item.clip_draw(46 * 11, 3 + 47 * 2, 45, 45,  x, y, sx,sz)  # 0
+    i += 1
+    if(num == i):
+        Texture.P_item.clip_draw(46 * 0, 3 + 47 * 3, 45, 45,  x,y, sx,sz)  # 1
+    i += 1
+    if (num == i):
+        Texture.P_item.clip_draw(46 * 0, 3 + 47 * 1, 45, 45, x,y, sx,sz)  # 2
+    i += 1
+    if (num == i):
+        Texture.P_item.clip_draw(46 * 0, 3 + 47 * 0, 45, 45, x,y, sx,sz)  # 3
+    i += 1
+    if (num == i):
+        Texture.P_item.clip_draw(46 * 12, 3 + 47 * 3, 40, 45, x,y,sx,sz)  # 4
+    i += 1
+    if (num == i):
+        Texture.P_item.clip_draw(782, 650, 40, 45, x,y, sx,sz)  # 5
+    i += 1
+    if (num == i):
+        Texture.P_item.clip_draw(46 * 2, 4 + 46 * 12, 45, 46, x,y, sx,sz)  # 6
+    i += 1
+    if (num == i):
+        Texture.P_item.clip_draw(46 * 7, 4 + 46 * 0, 45, 46, x,y, sx,sz)  # 7
+    i += 1
+    if (num == i):
+        Texture.P_item.clip_draw(46 * 7, 4 + 46 * 1, 45, 46, x,y, sx,sz)  # 8
+    i += 1
+    if (num == i):
+        Texture.P_item.clip_draw(46 * 7, 4 + 46 * 3, 45, 46, x,y, sx,sz)  # 9
+    i += 1
+    if (num == i):
+        Texture.P_item.clip_draw(46 * 2, 4 + 46 * 16, 44, 45, x,y, sx,sz)  # 10
+    i += 1
+    if (num == i):
+        Texture.P_item.clip_draw(780, 0 + 47 * 5, 40, 45, x,y,sx,sz)  # 11
+
+    i += 1
+    if (num == i):
+        Texture.P_item.clip_draw(46 * 3, 4 + 46 * 12, 45, 46, x,y, sx,sz)  # 12
+    i += 1
+    if (num == i):
+        Texture.P_item.clip_draw(46 * 2, 4 + 46 * 0, 45, 46, x,y, sx,sz)  # 13
+    i += 1
+    if (num == i):
+        Texture.P_item.clip_draw(46 * 8, 4 + 46 * 0, 45, 46, x,y, sx,sz)  # 14
+    i += 1
+    if (num == i):
+        Texture.P_item.clip_draw(46 * 12, 4 + 46 * 2, 45, 46, x,y, sx,sz)  # 15
+    i += 1
+    if (num == i):
+        Texture.P_item.clip_draw(46 * 6, 4 + 46 * 0, 44, 45, x,y, sx,sz)  # 16
+    i += 1
+    if (num == i):
+        Texture.P_item.clip_draw(774, 4 + 46 * 4, 45, 45, x,y, sx,sz)  # 17
+    i += 1
+    if (num == i):
+        Texture.P_item.clip_draw(46 * 2, 4 + 46 * 1, 45, 46, x,y, sx,sz)  # 18
+    i += 1
+    if (num == i):
+        Texture.P_item.clip_draw(46 * 1, 4 + 46 * 13, 45, 46,x,y, sx,sz)  # 19
+    i += 1
+    if (num == i):
+        Texture.P_item.clip_draw(46 * 2, 4 + 46 * 3, 44, 45, x,y, sx,sz)  # 20
+    i += 1
+    if (num == i):
+        Texture.P_item.clip_draw(46 * 4, 4 + 46 * 13, 44, 45, x,y, sx,sz)  # 20

@@ -1,10 +1,14 @@
 from Object import *
 import random
 from pico2d import*
+from Item import*
 
 class GLOBAL:
+    #item
+    Itemshow = -1
+    MyItem = inventory()
     # stage = title, main, level, stage, end
-    stage = "main"
+    stage = "level"
     prev_stage = "main"
 
     # level menu
